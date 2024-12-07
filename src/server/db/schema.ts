@@ -1,6 +1,4 @@
-import exp from "constants";
-import { sql } from "drizzle-orm";
-import { index, integer, pgTable, pgTableCreator, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core"; 
 
 export const subfourm = pgTable("subfourm", {
   id: serial("id").primaryKey(),
@@ -8,6 +6,7 @@ export const subfourm = pgTable("subfourm", {
   description: text("description").notNull(),
   created_at: timestamp("created_at").notNull().defaultNow(),
 });
+
 export const subfourm_post = pgTable("subfourm_post", {
   id: serial("id").primaryKey(),
   subfourm_id: integer("subfourm_id").notNull().references(() => subfourm.id),
