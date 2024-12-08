@@ -1,4 +1,4 @@
-import { getSubforumPostComments, getSubforumPosts} from "@/server/functions";
+import { getSubforumPost, getSubforumPostComments, getSubforumPosts} from "@/server/functions";
 import Link from "next/link";
 
 export default async function Page({
@@ -7,7 +7,7 @@ export default async function Page({
   params: Promise<{ post: number }>;
 }) {
   const postId = (await params).post;
-  const [post, comments] = await Promise.all([getSubforumPosts(postId), getSubforumPostComments(postId)])
+  const [post, comments] = await Promise.all([getSubforumPost(postId), getSubforumPostComments(postId)])
 
   if (!post) return;
   return (
