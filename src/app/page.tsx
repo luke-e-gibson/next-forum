@@ -30,6 +30,9 @@ export default async function HomePage() {
                     </span>
                     <span className="text-sm text-gray-500">5 posts</span>
                   </div>
+                  <div className="text-sm text-gray-500">
+                    <span>{subforum.description}</span>
+                  </div>
                 </Link>
               </li>
             ))}

@@ -51,7 +51,7 @@ export type CreateSubforumPostInput = {
 
 export async function createSubforumPost(
   subfourm_post: CreateSubforumPostInput,
-) {
+ ) {
   return db.insert(schema.subfourm_post).values({ ...subfourm_post });
 }
 

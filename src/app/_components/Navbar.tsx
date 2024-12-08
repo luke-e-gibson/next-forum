@@ -16,10 +16,10 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-5">
-          <button className="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-indigo-500 lg:mt-0">
+          <button className="mt-4 inline-block rounded border transition border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-indigo-500 lg:mt-0">
             Register
           </button>
-          <button className="mt-4 inline-block rounded border border-white bg-white px-4 py-2 text-sm leading-none text-indigo-500 hover:border-white hover:bg-indigo-500 hover:text-white lg:mt-0">
+          <button className="mt-4 inline-block rounded border transition border-white bg-white px-4 py-2 text-sm leading-none text-indigo-500 hover:border-white hover:bg-indigo-500 hover:text-white lg:mt-0">
             Login
           </button>
         </div>
