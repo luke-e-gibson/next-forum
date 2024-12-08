@@ -25,7 +25,7 @@ export default async function SubforumPosts({ subforumId }: { subforumId: number
       <ul className="divide-y divide-gray-200">
         {posts.map((post) => (
           <li key={post.id} className="hover:bg-indigo-50">
-            <Link href={`/post/${post.id}`} className="block px-6 py-4">
+            <Link href={`/subforum/1/post/${post.id}`} className="block px-6 py-4">
               <div className="flex items-center justify-between">
                 <span className="font-medium text-indigo-600">
                   {post.title}

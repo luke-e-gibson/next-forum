@@ -41,13 +41,22 @@ export const post_comment = pgTable("post_comment", {
   post_id: integer("post_id")
     .notNull()
     .references(() => subfourm_post.id),
+  title: text("title").notNull(),
   comment: text("comment").notNull(),
   created_at: timestamp("created_at").notNull().defaultNow(),
+  created_by: integer("created_by").notNull().references(()=> profile.id)
 });
 
-export const subforumPostRelations = relations(subfourm_post, ({ one }) => ({
+export const commentRelations = relations(post_comment, ({ one, many }) => ({
+  profile: one(profile, {
+    fields: [post_comment.created_by],
+    references: [profile.id],
+  })
+}))
+
+export const subforumPostRelations = relations(subfourm_post, ({ one, many }) => ({
   profile: one(profile, {
     fields: [subfourm_post.created_by],
     references: [profile.id],
-  }),
+  })
 }));
