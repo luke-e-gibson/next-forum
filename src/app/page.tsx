@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import Link from "next/link";
 import { getSubforums } from "@/server/functions";
 
@@ -11,9 +11,11 @@ export default async function HomePage() {
         <div className="overflow-hidden rounded-lg bg-white shadow-md">
           <div className="flex items-center justify-between bg-indigo-500 px-6 py-4 text-white">
             <h2 className="text-xl font-semibold">Subforums</h2>
-            <button className="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-indigo-500 lg:mt-0">
-              Create Subforum
-            </button>
+            <Link href="/subforum/create">
+              <button className="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-indigo-500 lg:mt-0">
+                Create Subforum
+              </button>
+            </Link>
           </div>
           <ul className="divide-y divide-gray-200">
             {subforums.map((subforum) => (

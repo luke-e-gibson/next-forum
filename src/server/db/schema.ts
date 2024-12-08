@@ -1,4 +1,11 @@
-import { integer, pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
 import exp from "constants";
 import { relations } from "drizzle-orm";
 
@@ -37,19 +44,21 @@ export const post_comment = pgTable("post_comment", {
   title: text("title").notNull(),
   comment: text("comment").notNull(),
   created_at: timestamp("created_at").notNull().defaultNow(),
-  created_by: integer("created_by").notNull().references(()=> profile.id)
+  created_by: integer("created_by")
+    .notNull()
+    .references(() => profile.id),
 });
 
 export const commentRelations = relations(post_comment, ({ one }) => ({
   profile: one(profile, {
     fields: [post_comment.created_by],
     references: [profile.id],
-  })
-}))
+  }),
+}));
 
 export const subforumPostRelations = relations(subfourm_post, ({ one }) => ({
   profile: one(profile, {
     fields: [subfourm_post.created_by],
     references: [profile.id],
-  })
+  }),
 }));
