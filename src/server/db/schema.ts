@@ -2,9 +2,10 @@ import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
 export const subfourm = pgTable("subfourm", {
   id: serial("id").primaryKey(),
-  title: text("title").notNull(),
+  title: text("title").notNull().unique(),
   description: text("description").notNull(),
   created_at: timestamp("created_at").notNull().defaultNow(),
+  num_posts: integer("num_posts").notNull().default(0),
 });
 
 export const subfourm_post = pgTable("subfourm_post", {
