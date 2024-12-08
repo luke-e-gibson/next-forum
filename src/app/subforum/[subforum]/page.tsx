@@ -1,5 +1,5 @@
 "use server";
-
+import { unstable_cacheLife as cacheLife } from 'next/cache'
 import { getSubforum, getSubforumPosts } from "@/server/functions";
 import Link from "next/link";
 
