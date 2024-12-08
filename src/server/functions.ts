@@ -38,7 +38,7 @@ export async function getSubforumPosts(subfourm_id: number) {
     return db.query.subfourm_post.findMany({
         where: (subfourm_post, {eq}) => eq(subfourm_post.subfourm_id, subfourm_id),
         with: {
-            post_comment: true
+            profile: true
         }
     });
 }
@@ -47,6 +47,7 @@ export type CreateSubforumPostInput = {
     subfourm_id: number;
     title: string;
     description: string;
+    created_by: number
 }
 
 export async function createSubforumPost(subfourm_post: CreateSubforumPostInput) {
