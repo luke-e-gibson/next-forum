@@ -1,7 +1,7 @@
 "use client"
 
 import Form from 'next/form';
-import {useCallback, useEffect, useState} from "react";
+import {Suspense, useCallback, useEffect, useState} from "react";
 import Select from 'react-select'
 import {createSubforumFormPost} from "@/server/forms";
 
@@ -66,7 +66,9 @@ export default function CreatePostPage() {
                 <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="subforum">
                   Subforum
                 </label>
-                {isClient ? <Select name="subforum" id="subforum" options={subforums}/> : <></>}
+                <Suspense>
+                  {isClient ? <Select name="subforum" id="subforum" options={subforums}/> : <></>}
+                </Suspense>
               </div>
               <div className="mb-4">
                 <button

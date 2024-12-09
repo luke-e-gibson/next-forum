@@ -2,6 +2,7 @@
 import { unstable_cacheLife as cacheLife } from 'next/cache'
 import { getSubforum, getSubforumPosts } from "@/server/functions";
 import Link from "next/link";
+import {Suspense} from "react";
 
 export default async function Page({
   params,
@@ -42,25 +43,27 @@ export default async function Page({
           </Link>
         </div>
         <ul className="divide-y divide-gray-200">
-          {posts.map((post) => (
-            <li key={post.id} className="hover:bg-indigo-50">
-              <Link
-                href={`/subforum/1/post/${post.id}`}
-                className="block px-6 py-4"
-              >
-                <div className="flex items-center justify-between">
+          <Suspense>
+            {posts.map((post) => (
+                <li key={post.id} className="hover:bg-indigo-50">
+                  <Link
+                      href={`/subforum/1/post/${post.id}`}
+                      className="block px-6 py-4"
+                  >
+                    <div className="flex items-center justify-between">
                   <span className="font-medium text-indigo-600">
                     {post.title}
                   </span>
-                  <span className="text-sm text-gray-500">10 comments</span>
-                </div>
-                <div className="mt-2 text-sm text-gray-500">
-                  Posted by {post.profile.username} on{" "}
-                  {new Date(post.created_at).toLocaleDateString()}
-                </div>
-              </Link>
-            </li>
-          ))}
+                      <span className="text-sm text-gray-500">10 comments</span>
+                    </div>
+                    <div className="mt-2 text-sm text-gray-500">
+                      Posted by {post.profile.username} on{" "}
+                      {new Date(post.created_at).toLocaleDateString()}
+                    </div>
+                  </Link>
+                </li>
+            ))}
+          </Suspense>
         </ul>
       </div>
     </div>

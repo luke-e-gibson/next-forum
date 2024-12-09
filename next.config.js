@@ -14,6 +14,11 @@ const config = {
                 revalidate: 30, // 30s
                 expire: 86400, //1day
             },
+            functionsComments: {
+                stale: 60 * 2, // 2min
+                revalidate: 30, // 30s
+                expire: 86400, //1day
+            },
             pages: {
                 stale: 60 * 4, // 2min
                 revalidate: 30, // 30s

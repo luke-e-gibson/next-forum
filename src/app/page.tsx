@@ -1,6 +1,7 @@
 "use server";
 import Link from "next/link";
 import { getSubforums } from "@/server/functions";
+import {Suspense} from "react";
 
 export default async function HomePage() {
   const subforums = await getSubforums();
@@ -18,24 +19,26 @@ export default async function HomePage() {
             </Link>
           </div>
           <ul className="divide-y divide-gray-200">
-            {subforums.map((subforum) => (
-              <li key={subforum.id} className="hover:bg-indigo-50">
-                <Link
-                  href={`/subforum/${subforum.id}`}
-                  className="block px-6 py-4"
-                >
-                  <div className="flex items-center justify-between">
+            <Suspense>
+              {subforums.map((subforum) => (
+                  <li key={subforum.id} className="hover:bg-indigo-50">
+                    <Link
+                        href={`/subforum/${subforum.id}`}
+                        className="block px-6 py-4"
+                    >
+                      <div className="flex items-center justify-between">
                     <span className="font-medium text-indigo-600">
                       {subforum.title}
                     </span>
-                    <span className="text-sm text-gray-500">5 posts</span>
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    <span>{subforum.description}</span>
-                  </div>
-                </Link>
-              </li>
-            ))}
+                        <span className="text-sm text-gray-500">5 posts</span>
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        <span>{subforum.description}</span>
+                      </div>
+                    </Link>
+                  </li>
+              ))}
+            </Suspense>
           </ul>
         </div>
       </main>

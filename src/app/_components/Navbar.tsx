@@ -1,4 +1,6 @@
 import Link from "next/link";
+import {SignedIn, SignedOut, SignIn, SignInButton, SignOutButton} from "@clerk/nextjs";
+import {Suspense} from "react";
 
 export default function Navbar() {
   return (
@@ -15,13 +17,17 @@ export default function Navbar() {
             Home
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-5">
-          <button className="mt-4 inline-block rounded border transition border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-indigo-500 lg:mt-0">
-            Register
-          </button>
-          <button className="mt-4 inline-block rounded border transition border-white bg-white px-4 py-2 text-sm leading-none text-indigo-500 hover:border-white hover:bg-indigo-500 hover:text-white lg:mt-0">
-            Login
-          </button>
+        <div className="">
+          <Suspense>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+          </Suspense>
+          <Suspense>
+            <SignedIn>
+              <SignOutButton />
+            </SignedIn>
+          </Suspense>
         </div>
       </div>
     </nav>

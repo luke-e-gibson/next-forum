@@ -72,19 +72,20 @@ export async function createSubforumPost(
 // Subforum Post Comments
 export async function getSubforumPostComments(post_id: number) {
   'use cache';
-  cacheLife("functions")
+  cacheLife("functionsComments")
 
   return db.query.post_comment.findMany({
     where: (post_comment, { eq }) => eq(post_comment.post_id, post_id),
     with: {
       profile: true,
+
     },
   });
 }
 
 export async function getSubforumPostComment(id: number) {
   'use cache';
-  cacheLife("functions")
+  cacheLife("functionsComments")
 
   return db.query.post_comment.findFirst({
     where: (post_comment, { eq }) => eq(post_comment.id, id),

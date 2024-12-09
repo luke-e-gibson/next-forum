@@ -1,7 +1,8 @@
 "use server"
 
 import {redirect} from "next/navigation";
-import {createSubforum, createSubforumPost} from "@/server/functions";
+import {createSubforum, createSubforumPost, createSubforumPostComment} from "@/server/functions";
+import {revalidatePath, revalidateTag} from "next/cache";
 
 export async function createSubforumFormPost(formData: FormData) {
     const name = formData.get("title") as string;
@@ -20,4 +21,16 @@ export async function createSubforumForm(formData: FormData) {
     await createSubforum({title: name, description: description});
 
     redirect("/")
+}
+
+export async function createPostComment(formData: FormData) {
+    const comment = formData.get("comment") as string;
+    const postId = formData.get("post_id") as string;
+    const subforumId = formData.get("sub_id") as string;
+
+    if(!comment || !postId) return;
+
+    await createSubforumPostComment({comment, title: "", post_id: Number(postId), created_by: 1})
+    revalidateTag("functionsComments")
+    redirect(`/subforum/${subforumId}/post/${postId}`)
 }
