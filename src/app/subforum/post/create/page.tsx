@@ -10,7 +10,7 @@ export default function CreatePostPage() {
   const [subforums, setSubforums] = useState<Array<{value: string, label: string}>>();
 
   const getForums = useCallback(async () => {
-    const request = (await fetch("http://localhost:3000/api/subforums", {cache: "force-cache", method: "GET"}));
+    const request = (await fetch("/api/subforums", {cache: "force-cache", method: "GET"}));
     const forums = await request.json() as Array<{id: number, name: string}>
 
     const options = forums.map((forum) => ({
