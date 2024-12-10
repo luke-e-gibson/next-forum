@@ -4,7 +4,6 @@ import { getSubforums } from "@/server/functions";
 import { Suspense } from "react";
 
 export default async function HomePage() {
-  "use cache"
   const subforums = await getSubforums();
 
   return (
