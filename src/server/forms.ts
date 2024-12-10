@@ -1,8 +1,8 @@
 "use server"
 
-import {redirect} from "next/navigation";
-import {createSubforum, createSubforumPost, createSubforumPostComment} from "@/server/functions";
-import {revalidatePath, revalidateTag} from "next/cache";
+import { redirect } from "next/navigation";
+import { createSubforum, createSubforumPost, createSubforumPostComment } from "@/server/functions";
+import { revalidateTag } from "next/cache";
 
 export async function createSubforumFormPost(formData: FormData) {
     const name = formData.get("title") as string;

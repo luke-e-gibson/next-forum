@@ -1,6 +1,8 @@
+"use client"
+
 import Link from "next/link";
-import {SignedIn, SignedOut, SignIn, SignInButton, SignOutButton} from "@clerk/nextjs";
-import {Suspense} from "react";
+import { SignedIn, SignedOut, SignIn, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { Suspense } from "react";
 
 export default function Navbar() {
   return (

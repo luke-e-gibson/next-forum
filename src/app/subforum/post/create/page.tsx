@@ -1,9 +1,9 @@
 "use client"
 
 import Form from 'next/form';
-import {Suspense, useCallback, useEffect, useState} from "react";
 import Select from 'react-select'
-import {createSubforumFormPost} from "@/server/forms";
+import { Suspense, useCallback, useEffect, useState } from "react";
+import { createSubforumFormPost } from "@/server/forms";
 
 export default function CreatePostPage() {
   const [isClient, setIsClient] = useState(false)

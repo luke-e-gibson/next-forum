@@ -6,8 +6,8 @@ import {
 import Link from "next/link";
 import Form from "next/form";
 import { createPostComment } from "@/server/forms";
-import {SignedIn} from "@clerk/nextjs";
-import {Suspense} from "react";
+import { SignedIn } from "@clerk/nextjs";
+import { Suspense } from "react";
 
 export default async function Page({
   params,
@@ -26,16 +26,16 @@ export default async function Page({
       <div className="overflow-hidden rounded-lg bg-white shadow-md">
         <div>
           <div className="flex items-center justify-between bg-indigo-500 px-6 py-4 text-white">
-            <h2 className="text-xl font-semibold">{post.title}</h2>
             <Suspense>
+              <h2 className="text-xl font-semibold">{post.title}</h2>
               <h2 className="text-xl font-semibold">
                 Created On {new Date(post.created_at).toLocaleDateString()} By{" "}
                 {post.profile.username}
               </h2>
             </Suspense>
           </div>
-          <div className="px-6 py-4">{post.description}</div>
          <Suspense>
+          <div className="px-6 py-4">{post.description}</div>
            <SignedIn>
              <hr />
              <Form action={createPostComment}>

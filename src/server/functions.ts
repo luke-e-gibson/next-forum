@@ -6,15 +6,11 @@ import { unstable_cacheLife as cacheLife } from 'next/cache'
 
 //Subforums
 export async function getSubforums() {
-  'use cache';
-  cacheLife("functions")
 
   return db.query.subfourm.findMany();
 }
 
 export async function getSubforum(id: number) {
-  'use cache';
-  cacheLife("functions")
 
   return db.query.subfourm.findFirst({
     where: (subfourm, { eq }) => eq(subfourm.id, id),
@@ -32,8 +28,6 @@ export async function createSubforum(subfourm: CreateSubforumInput) {
 
 // Subforum Posts
 export async function getSubforumPost(id: number) {
-  'use cache';
-  cacheLife("functions")
 
   return db.query.subfourm_post.findFirst({
     where: (subfourm_post, { eq }) => eq(subfourm_post.id, id),
@@ -44,8 +38,6 @@ export async function getSubforumPost(id: number) {
 }
 
 export async function getSubforumPosts(subfourm_id: number) {
-  'use cache';
-  cacheLife("functions")
 
   return db.query.subfourm_post.findMany({
     where: (subfourm_post, { eq }) =>
@@ -71,8 +63,6 @@ export async function createSubforumPost(
 
 // Subforum Post Comments
 export async function getSubforumPostComments(post_id: number) {
-  'use cache';
-  cacheLife("functionsComments")
 
   return db.query.post_comment.findMany({
     where: (post_comment, { eq }) => eq(post_comment.post_id, post_id),
@@ -84,9 +74,6 @@ export async function getSubforumPostComments(post_id: number) {
 }
 
 export async function getSubforumPostComment(id: number) {
-  'use cache';
-  cacheLife("functionsComments")
-
   return db.query.post_comment.findFirst({
     where: (post_comment, { eq }) => eq(post_comment.id, id),
   });

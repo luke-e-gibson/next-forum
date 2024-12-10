@@ -15,17 +15,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
-      <html
-        suppressHydrationWarning
-        lang="en"
-        className={`${GeistSans.variable}`}
-      >
+    <html
+      suppressHydrationWarning
+      lang="en"
+      className={`${GeistSans.variable}`}
+    >
+      <ClerkProvider>
         <body>
           <Navbar />
           {children}
         </body>
-      </html>
-    </ClerkProvider>
+      </ClerkProvider>
+    </html>
   );
 }
